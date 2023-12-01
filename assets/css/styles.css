@@ -30,34 +30,26 @@
 }
 
 :root {
+	--dark-red: #631D0E;
 	--bgColor: #d4cdb1;
   --darkcolor: #631d0e;
   --lightcolor: #eadeb5;
+  --lightcolor: #cbbe90;
 }
 
 body {
 	background-color: var(--bgColor);
-	margin: 0; padding:0;
-	
+	margin: 0;
+	padding: 0;
 	background-image: 
-		url("images/square-bg.svg"),
-		linear-gradient(to bottom,  #d4cdb111 0%,#9e9d8b11 48%,#547d7f11 100%),
-		url(images/watercolour_paper.jpg);
-
-	background-size:
-		12px,
-		cover,
-		cover;
-	background-repeat: 
-		repeat,
-		no-repeat,
-		no-repeat;
-		background-blend-mode: 
-		normal,
-		multiply,
-		normal;
-		
-	}
+		url(/images/square-bg.svg), 
+		radial-gradient(circle, white, #0003),
+		linear-gradient(to bottom, #f5c91a45 0%,#9c926b 48%,#438589 100%), 
+		url(/images/grungy-paper.jpg);
+	background-size: 12px, cover, cover, cover;
+	background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+	background-blend-mode: normal, multiply, multiply, normal;
+}
 
 .container {
 	min-height: 100vh;
@@ -65,41 +57,47 @@ body {
 	grid-template-rows: 1fr auto;
 }	
 table {
-	max-width: 2460px;
+	max-width: 1500px;
 	/* max-height: 90vh; */
-	width: 97%;
+	/* width: 97%; */
+	width: 100%;
 	border-spacing: .4em;
 	margin: 2em auto;
-	table-layout: fixed; /* renders faster - the default value is auto */
-	mix-blend-mode: hard-light;
+	table-layout: fixed; /* keeps cells the same size provided the table width is specified */
 	align-self: self-start;
+	mix-blend-mode: normal;
+	mix-blend-mode: hard-light;
 }
 td {
+	--shadowColor: #a0956f;
 	border:solid 2px var(--darkcolor);
 	border-radius: 2px;
-	max-height: 2vh;
-	width: 4vw;
+	/* max-height: 2vh; */
+	/* width: 4vw; */
 	color: var(--darkcolor);
 	font-family: 'SansBlackSmall', impact, sans-serif;
 	font-size: 2.4vw;
+	font-size: clamp(0.9375rem, -0.25rem + 3.8vw, 3.3125rem);
 	text-align: center;
-	text-shadow: 1.5px 1.5px 0px #eadeb5, 2.5px 2.5px var(--darkcolor);
-	background: var(--lightcolor);
+	text-shadow: 1.5px 1.5px 0px var(--lightcolor), 2.5px 2.5px var(--darkcolor);
+	background: var(--lightcolor)aa;
 	box-shadow: inset 10px 10px 15px #B7B091, inset -10px -10px 15px #B7B091;
+	box-shadow: inset 10px 10px 15px var(--shadowColor), inset -10px -10px 15px var(--shadowColor);
 	vertical-align: bottom;
-  transition: .5s
+  transition: .25s;
 }
 td:hover {
   transform: scale(1.1);
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 
-td[title="Lithium"]:hover::after {
+/* td[title="Lithium"]:hover::after {
   content: 'Lithium is a controversial element in the periodic table and has a song named after it';
   display: block;
   padding: 8px;
   /* width: 9em; */
-  background: var(--darkcolor);
+
+/*  background: var(--darkcolor);
   text-align: left;
   font-size: .8rem;
   font-family: 'segoe ui', PT Sans Narrow;
@@ -109,7 +107,8 @@ td[title="Lithium"]:hover::after {
   text-shadow: none;
   top: 0;
   left: 100%;
-}
+} 
+*/
 
 :is(td, .info) a {
 	display: block;
@@ -120,21 +119,25 @@ td[title="Lithium"]:hover::after {
 td > a:hover {
 	background: #fee;
 }
+td div:first-child,
+td div:last-child {
+	font-family: 'Antonio-Regular', 'PT Sans Narrow', georgia, arial, sans-serif;
+	font-size: clamp(0.3125rem, -0.125rem + 0.9333vw, 0.75rem);
+	letter-spacing: .5px;
+	text-shadow:none;
+	
+}
 td div:first-child {
-	font-family: 'Antonio-Regular', georgia;
-	font-size: .8vw;
+	/* font-size: .8vw; */
+	font-weight: bold;
 	text-align: right;
 	margin: -1px 3px -8px 0;
-	text-shadow: none;
 }
-td div:last-of-type {
-	font-size: 0.7vw;
-	letter-spacing: .5px;
-	font-family: 'Antonio-Regular', 'PT Sans Narrow','Antonio-Regular', georgia, arial, sans-serif;
-	text-shadow:none;
+td div:last-child {
 	color:#eadeb5;
 	background-color: var(--darkcolor);
-	margin-top: 0em; margin-bottom: 0;
+	margin-top: 0em; 
+	margin-bottom: 0;
 	padding: .4em 0;
 }
 
@@ -171,22 +174,44 @@ td.gap {
 	box-shadow: none;
 
 }
+td.heading-cell {
+	border: none;
+	box-shadow: none;
+	vertical-align: top;
 
+	& :hover {
+		transform: scale(1);
+	}
+}
 h1 {
-	position: absolute;
-	top: 5vh; left: 25vw;
+	/* margin: 0 auto 2em auto; */
+	margin-top: 0.5em;
 	font-family: 'Antonio-Regular', georgia, impact;
-	font-size: 3.2vw;
+	font-size: 4vw;
+	font-size: clamp(3.125rem, 1.25rem + 4vw, 5rem);
 	font-weight: normal;
-	color: #eadeb5;
-	text-shadow: .05vw .05vw var(--darkcolor), -.05vw -.05vw var(--darkcolor), .25vw .25vw var(--darkcolor);
+	color: var(--lightcolor);
+	/* color: transparent; */
+	text-shadow: 
+		.025vw .025vw var(--darkcolor), 
+		.05vw .05vw var(--darkcolor), 
+		.10vw .10vw var(--darkcolor), 
+		-.05vw -.05vw var(--darkcolor), 
+		.15vw .15vw var(--darkcolor),
+		.17vw .17vw var(--darkcolor),
+		.25vw .25vw var(--darkcolor);
 	text-align: center;
 	line-height: .9;
 	letter-spacing: -.05vw;
-}
-h1 span {
-	font-size: 2.1vw;
-	text-transform: capitalize;
+
+	& span {
+		font-size: clamp(1.875rem, 0.625rem + 2.6667vw, 3.125rem);
+		text-transform: capitalize;
+	}
+
+	/* The text shadows block the background. Might be able to fix with an ::after */
+	/* background-image: repeating-linear-gradient(45deg,  var(--dark-red) 0 2px, var(--lightcolor) 2px 12px);
+	background-clip: text; */
 }
 
 
@@ -219,11 +244,6 @@ footer ul li a:hover {
 	outline:solid 7px #fe73e2
 }
 
-/* @media screen and (orientation:portrait) {
-    .container {
-		transform: rotate(90deg);
-	}
-} */
 
 .info {
 	position: absolute;
@@ -271,4 +291,17 @@ button.close_info a {
 }
 #lithium:target {
 	transform: translateX(50%);
+}
+
+
+/* @media screen and (orientation:portrait) {
+    .container {
+		transform: rotate(90deg);
+	}
+} */
+
+@media (max-width: 730px) {
+	td div:last-of-type {
+		display: none;
+	}
 }

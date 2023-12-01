@@ -1,0 +1,7 @@
+<footer>
+    <ul>
+        {{ range site.Sections }}
+            <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{ end }}
+    </ul>
+</footer>

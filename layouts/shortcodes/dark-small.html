@@ -1,0 +1,72 @@
+<div class="colour-keys">
+    <div class="key nonmetal">non metal</div>
+    <div class="key alkali-metal">alkali metal</div>
+    <div class="key noble-gas">noble gas</div>
+    <div class="key alkaline-earth-metal">alkaline earth metal</div>
+    <div class="key metalloid">metalloid</div>
+    <div class="key transition-metal">transition metal</div>
+    <div class="key halogen">halogen</div>
+    <div class="key metal">metal</div>
+    <div class="key actinoid">actinoid</div>
+    <div class="key lanthanoid">lanthanoid</div>
+    <div class="key post-transition-metal">post transition metal</div>
+</div>
+
+
+<section class="periodic-table">
+    {{ range site.Data.periodic_table }}
+    
+
+    {{ $id := .name | lower }}
+    {{ $click := printf `onclick="%s.showModal()"` $id | safeHTML }}
+
+    
+    <div class="element-block {{ .symbol | lower }} {{ .name | lower }} {{ replace .groupBlock " " "-" }}"
+    {{ print $click | safeHTMLAttr }}
+    >
+    
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+
+    <div class="atomic-number">{{ .atomicNumber }}</div>
+        <h2>{{ .symbol }}</h2>
+        <p class="elem-name">{{ .name }}</p>
+    
+    </div>
+    
+    {{ end }}
+</section>
+
+
+
+
+{{ range site.Data.periodic_table }}
+
+<dialog class="{{ replace .groupBlock " " "-" }}" id="{{ .name | lower }}">
+
+    <button class="close-modal">&#10006;</button>
+
+<h2>{{ .name }}</h2>
+
+<p>Melts at {{  .meltingPoint }}K</p>
+<p>Boils at {{  .boilingPoint }}K</p>
+<p>First discovered in: {{ .yearDiscovered }}</p>
+
+{{ with .description }}
+    {{ . | safeHTML }}
+{{ end }}
+<div class="wikip"><a href="https://en.wikipedia.org/wiki/{{ .name }}">More on WikiP</a></div>
+<div class="episodic"><a href="http://episodictable.com/{{ .name | lower }}/">Podcast on {{ .name | title }}</a></div>
+</dialog>
+{{ end }}
+
+
+<script>
+    closeBtns = document.querySelectorAll('.close-modal');
+
+    closeBtns.forEach( btn => {
+        btn.addEventListener('click', (e) =>  {
+           e.target.parentNode.close();
+        // alert('Not working yet');
+        } )
+    })
+</script>

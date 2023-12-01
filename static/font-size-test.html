@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing font sizes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .vw p:nth-of-type(1) {
+            font-size: 2vw;
+        }
+        .vw p:nth-of-type(2) {
+            font-size: 1.7vw;
+        }
+        .vw p:nth-of-type(3) {
+            font-size: 1.4vw;
+        }
+        .vw p:nth-of-type(4) {
+            font-size: .7vw;
+        }
+        .vw p:nth-of-type(5) {
+            font-size: 0.5vw;
+        }
+        .vw p:nth-of-type(6) {
+            font-size: 0.3vw;
+        }
+        .vw p:nth-of-type(7) {
+            font-size-adjust: 0.25;
+            font-size: 0.3vw;
+        }
+
+        .rem {
+            margin-top: 5em;
+            font-size-adjust: 0.25;
+        }
+        .rem p:nth-of-type(1) {
+            font-size: 1vw;
+        }
+        .rem p:nth-of-type(2) {
+            font-size: .7vw;
+        }
+        .rem p:nth-of-type(3) {
+            font-size: .5vw;
+        }
+        .rem p:nth-of-type(4) {
+            font-size: .3vw;
+        }
+        .rem p:nth-of-type(5) {
+            font-size: .7em;
+        }
+        .rem p:nth-of-type(6) {
+            font-size: 2vw;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <h1>Test font sizes</h1>
+
+<div class="vw">
+        <p>Viewport units do not scale in Firefox when below 1vw or 1vh. 1vw appears to be the minimum size. Chrome scales down all the way..</p>
+        <p>1.7vw - Firefox has a minimmum absolute size of 9px for accessibility reasons.</p>
+        <p>1.4vw - This can be over-ridden using the CSS property <code>font-size-adjust.</code></p>
+        <p>0.7vw - The last paragraph in this block uses <code>font-size-adjust: 0.25;</code>.</p>
+        <p>0.5vw - Tempore ut voluptates minus ex, debitis odit ullam saepe ad in nesciunt exercitationem quae eaque eos iste quidem quo facere beatae repudiandae!</p>
+        <p>0.3vw - Ut necessitatibus id ducimus vitae placeat aliquid nisi eius, tempora aspernatur voluptatum debitis eum, provident dolorum aperiam doloribus. Voluptas accusamus id reiciendis.</p>
+        <p>0.3vh - Ut necessitatibus id ducimus vitae placeat aliquid nisi eius, tempora aspernatur voluptatum debitis eum, provident dolorum aperiam doloribus. Voluptas accusamus id reiciendis.</p>
+</div>
+
+
+
+<div class="rem">
+        <p>Viewport units do not scale in Firefox when below 1vw or 1vh. 1vw appears to be the minimum size. Chrome scales down all the way..</p>
+        <p>1.7vw - Soluta officiis voluptate delectus reiciendis et quis vitae, quisquam natus minus quae nulla tempore fugiat obcaecati non mollitia tenetur, dolorum tempora repellat?</p>
+        <p>1.4vw - Eius est, iusto quod deserunt laborum voluptate voluptatem saepe maxime blanditiis minima ullam? Consequuntur, obcaecati aliquid. Quis labore deserunt hic sit dolore!</p>
+        <p>0.7vw - Sequi iure nulla consequatur repellat quam, ut aperiam deleniti iusto vero velit at sed illum, cum quia odit quis, doloribus labore fugiat.</p>
+        <p>0.5vw - Tempore ut voluptates minus ex, debitis odit ullam saepe ad in nesciunt exercitationem quae eaque eos iste quidem quo facere beatae repudiandae!</p>
+        <p>0.3vw - Ut necessitatibus id ducimus vitae placeat aliquid nisi eius, tempora aspernatur voluptatum debitis eum, provident dolorum aperiam doloribus. Voluptas accusamus id reiciendis.</p>
+        <p>0.3vh - Ut necessitatibus id ducimus vitae placeat aliquid nisi eius, tempora aspernatur voluptatum debitis eum, provident dolorum aperiam doloribus. Voluptas accusamus id reiciendis.</p>
+</div>
+
+
+<div class="notes">
+    <p>One solution offered is <code>min-font-size: 15px!important;</code></p>
+
+</div>
+    
+</body>
+</html>
